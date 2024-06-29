@@ -1,0 +1,39 @@
+<div>
+
+  <mat-toolbar class="mat-elevation-z3" >
+    <!-- mat-mini-fab -->
+    <button mat-icon-button (click)="collapsed.set(!collapsed())" >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="ms-4 title-header">Electrodomesticos</span>
+    <span class="example-spacer"></span>
+    <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-center align-items-center">
+        Hola, <b class="ms-1">Luis</b>
+      </div>
+      <button mat-icon-button class="example-icon"[matMenuTriggerFor]="menu">
+          <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Mi Perfil</button>
+        <button mat-menu-item>Cerrar Sesión</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-container fade-in" autosize>
+    <mat-sidenav #drawer opened mode="side" position="start"
+    [style.width]="sidenavWidth()">
+      <!-- <app-sidenav [collapsed]="collapsed()" /> -->
+      <app-header [collapsed]="collapsed()" />
+    </mat-sidenav>
+    <mat-sidenav #drawer opened mode="side" position="end"
+    [style.width]="sidenavWidth()">
+      <app-sidenav [collapsed]="collapsed()" />
+    </mat-sidenav>
+    <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
+        <router-outlet />
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>

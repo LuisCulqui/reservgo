@@ -1,0 +1,50 @@
+<div class="container-login">
+  <div class="container-form-login d-flex justify-content-center">
+    <mat-card class="mat-card">
+      <mat-card-header class="d-flex justify-content-center">
+        <mat-card-title class="title-text">Login</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="mt-4">
+        <form class="example-form">
+          <!-- GMAIL -->
+          <mat-form-field class="input-font input" appearance="outline">
+            <mat-label class="form-label">Email</mat-label>
+            <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                   placeholder="Ejem. usuario@example.com">
+            <mat-hint>Email válido!</mat-hint>
+            @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+              <mat-error>Porfavor ingrese un correo válido</mat-error>
+            }
+            @if (emailFormControl.hasError('required')) {
+              <mat-error>*Email es <strong>obligatorio</strong></mat-error>
+            }
+          </mat-form-field>
+          <!-- PASSWORD -->
+          <mat-form-field class="input-font input mt-4" appearance="outline">
+            <mat-label class="form-label">Password</mat-label>
+            <input [type]="hide ? 'password' : 'text'" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
+                   placeholder="Clave123#">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+
+            <mat-hint>Clave válido!</mat-hint>
+
+            @if (passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')) {
+              <mat-error>Ingrese una clave correcta!</mat-error>
+            }
+            @if (passwordFormControl.hasError('required')) {
+              <mat-error>*Contraseña es <strong>obligatorio</strong></mat-error>
+            }
+          </mat-form-field>
+
+
+          <mat-card-actions class="d-flex justify-content-center mt-3">
+            <button mat-button class="button-login">Ingresar</button>
+          </mat-card-actions>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>
